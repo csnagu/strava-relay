@@ -63,7 +63,7 @@ const fetchActivityTimes = async () => {
     const accessToken = await getAccessToken();
     const date = new Date();
     const endDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
-    const beginDate = new Date(date.getFullYear(), date.getMonth(), date.getDate() - 7);
+    const beginDate = new Date(date.getFullYear(), date.getMonth(), date.getDate() - 1);
 
     try {
         const res = await axios.get(url, {
