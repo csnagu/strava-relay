@@ -104,7 +104,7 @@ const getActiveSprintId = async () => {
                 'Content-Type': 'application/json'
             }
         });
-        await logeer.info('active sprint id: ', res.data.values[0].id);
+        await logger.info('active sprint id: ', res.data.values[0].id);
         return res.data.values[0].id;
     } catch (err) {
         logger.error(err);
