@@ -62,9 +62,12 @@ const fetchActivityTimes = async () => {
     const url = stravaBaseUrl + '/athlete/activities';
     const accessToken = await getAccessToken();
     const date = new Date();
+    date.setTime(date.getTime() + 1000*60*60*9);// JSTに変換
     const endDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
     const beginDate = new Date(date.getFullYear(), date.getMonth(), date.getDate() - 1);
 
+    // TODO: endDate, beginDateの設定がうまくできてない（3時間前の時間を基準にしてる）
+    // TODO: strava tokenの期限切れたときに無力になる => 401, {"message":"Authorization Error","errors":[{"resource":"AccessToken","field":"activity:read_permission","code":"missing"}]}
     try {
         const res = await axios.get(url, {
             params: {
